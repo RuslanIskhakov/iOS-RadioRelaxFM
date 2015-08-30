@@ -10,7 +10,7 @@
 
 @interface RMAudioPlayer()
 @property (strong, nonatomic) AVPlayer *audioPlayer;
-@property (nonatomic) BOOL isPlaying;
+@property (atomic) BOOL isPlaying;
 @end
 
 NSObject *mSyncObject;
@@ -43,18 +43,27 @@ NSObject *mSyncObject;
 - (void) onPlayButtonTapUp
 {
     if (self.isPlaying){
-        [self.audioPlayer pause];
-        AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-        NSError *activationError = nil;
-        BOOL success = [audioSession setActive:NO error:&activationError];
-        if (!success) {
-            NSLog(@"@Audio Session deactivation error: %@",activationError.debugDescription);
-        }
-        
-        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-        [nc removeObserver:self];
-        
+        self.isPlaying = NO;
+        NSLog(@"Cmd Stop");
     } else {
+        self.isPlaying = YES;
+        [NSThread detachNewThreadSelector:@selector(audioThreadMethod)
+                                 toTarget:self
+                               withObject:nil];
+        
+        NSLog(@"Cmd Play");
+    }
+}
+
+- (void) audioThreadMethod
+{
+    
+    
+    @autoreleasepool {
+        
+        NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+        NSLog(@"Audio Thread is starting");
+        
         AVAudioSession *audioSession = [AVAudioSession sharedInstance];
         
         NSError *setCategoryError = nil;
@@ -77,9 +86,28 @@ NSObject *mSyncObject;
                  object:nil];
         
         [self.audioPlayer play];
-        NSLog(@"Play");
+        
+        do {
+            @autoreleasepool {
+                NSLog(@"Audio Thread loop");
+                [runLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+            }
+        } while (self.isPlaying);
+        
+        
+        [self.audioPlayer pause];
+        //audioSession = [AVAudioSession sharedInstance];
+        NSError *deactivationError = nil;
+        success = [audioSession setActive:NO error:&deactivationError];
+        if (!success) {
+            NSLog(@"@Audio Session deactivation error: %@",deactivationError.debugDescription);
+        }
+        
+        //NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc removeObserver:self];
+        
+        NSLog(@"Audio Thread is stopping");
     }
-    self.isPlaying = !self.isPlaying;
 }
 
 - (void)audioSessionInterruptionNotificationReceived:(NSNotification *)notification
@@ -92,7 +120,6 @@ NSObject *mSyncObject;
             NSLog(@"Audio Interruption Begin");
             if (self.isPlaying){
                 [self.audioPlayer pause];
-                self.isPlaying = NO;
             }
         } break;
         case AVAudioSessionInterruptionTypeEnded:{
@@ -101,7 +128,7 @@ NSObject *mSyncObject;
             // • AVAudioSessionInterruptionOptionShouldResume option
             if (interruptionOption.unsignedIntegerValue == AVAudioSessionInterruptionOptionShouldResume) {
                 NSLog(@"Audio Interruption End");
-                if (!self.isPlaying){
+                if (self.isPlaying){
                     
                     int status = self.audioPlayer.status;
                     if (AVPlayerStatusFailed==status) {
@@ -113,7 +140,6 @@ NSObject *mSyncObject;
                     }
                     
                     [self.audioPlayer play];
-                    self.isPlaying = YES;
                 }
             }
         } break;

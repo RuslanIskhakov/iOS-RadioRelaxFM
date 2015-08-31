@@ -1,6 +1,6 @@
 //
-//  RMAudioPlayer.m
-//  Radio Manhattan
+//  RRAudioPlayer.m
+//  Radio Relax FM
 //
 //  Created by Deltasoft on 13.09.14.
 //  Copyright (c) 2014 Deltasoft. All rights reserved.
@@ -8,16 +8,28 @@
 
 #import "RRAudioPlayer.h"
 
-@interface RMAudioPlayer()
+@interface RRAudioPlayer()
 @property (strong, nonatomic) AVPlayer *audioPlayer;
 @property (atomic) BOOL isPlaying;
 @end
 
-NSObject *mSyncObject;
+static RRAudioPlayer *instance=nil;
 
-@implementation RMAudioPlayer
+@implementation RRAudioPlayer
 
 //http://stackoverflow.com/questions/9276546/can-not-restart-an-interrupted-audio-input-queue-in-background-mode-on-ios
+
++ (RRAudioPlayer*)getInstance
+{
+    @synchronized(self)
+    {
+        if(instance==nil)
+        {
+            instance= [[RRAudioPlayer alloc] init];
+        }
+    }
+    return instance;
+}
 
 - (AVPlayer *)audioPlayer
 {
@@ -34,9 +46,8 @@ NSObject *mSyncObject;
 
 - (instancetype) init
 {
-    NSLog(@"RMAudioPlayer Init");
+    NSLog(@"RRAudioPlayer Init");
     self.isPlaying = NO;
-    mSyncObject = [[NSObject alloc] init];
     return [super init];
 }
 
@@ -46,6 +57,7 @@ NSObject *mSyncObject;
         self.isPlaying = NO;
         NSLog(@"Cmd Stop");
     } else {
+        
         self.isPlaying = YES;
         [NSThread detachNewThreadSelector:@selector(audioThreadMethod)
                                  toTarget:self
@@ -57,8 +69,6 @@ NSObject *mSyncObject;
 
 - (void) audioThreadMethod
 {
-    
-    
     @autoreleasepool {
         
         NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
@@ -89,7 +99,6 @@ NSObject *mSyncObject;
         
         do {
             @autoreleasepool {
-                NSLog(@"Audio Thread loop");
                 [runLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10]];
             }
         } while (self.isPlaying);

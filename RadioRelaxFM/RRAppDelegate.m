@@ -1,6 +1,6 @@
 //
-//  RMAppDelegate.m
-//  Radio Manhattan
+//  RRAppDelegate.m
+//  Radio Relax FM
 //
 //  Created by Deltasoft on 17.03.14.
 //  Copyright (c) 2014 Deltasoft. All rights reserved.
@@ -11,17 +11,10 @@
 #import "RRAppDelegate.h"
 #import "RRAudioPlayer.h"
 
-@interface RMAppDelegate()
-@property (strong, nonatomic) RMAudioPlayer *RMPlayer;
+@interface RRAppDelegate()
 @end
 
-@implementation RMAppDelegate
-
-- (RMAudioPlayer *)RMPlayer
-{
-    if (!_RMPlayer) _RMPlayer = [[RMAudioPlayer alloc] init];
-    return _RMPlayer;
-}
+@implementation RRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -56,12 +49,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-- (void)onTestClick
-{
-    NSLog(@"Play Button Tap Up");
-    [self.RMPlayer onPlayButtonTapUp];
 }
 
 @end

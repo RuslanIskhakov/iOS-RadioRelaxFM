@@ -1,6 +1,6 @@
 //
-//  RMThirdViewController.h
-//  Radio Manhattan
+//  RRThirdViewController.h
+//  Radio Relax FM
 //
 //  Created by Deltasoft on 06.09.14.
 //  Copyright (c) 2014 Deltasoft. All rights reserved.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RMThirdViewController : UIViewController
+@interface RRThirdViewController : UIViewController
 
 @end

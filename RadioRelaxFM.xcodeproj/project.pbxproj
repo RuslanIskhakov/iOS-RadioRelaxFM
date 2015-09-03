@@ -24,6 +24,7 @@
 		9A77155A18D73DCF00174A16 /* RadioRelaxFMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A77155918D73DCF00174A16 /* RadioRelaxFMTests.m */; };
 		9A77C0F419BB0F5E0008D90E /* RRThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A77C0F319BB0F5E0008D90E /* RRThirdViewController.m */; };
 		9ACDA6D019C49DFB00FA8081 /* RRAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACDA6CF19C49DFB00FA8081 /* RRAudioPlayer.m */; };
+		BADD17B81B97324E0039D294 /* RRAudioTrackInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BADD17B71B97324E0039D294 /* RRAudioTrackInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +33,7 @@
 			containerPortal = 9A77152018D73DCE00174A16 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 9A77152718D73DCF00174A16;
-			remoteInfo = "RadioRelaxFM";
+			remoteInfo = RadioRelaxFM;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -62,6 +63,8 @@
 		9A77C0F319BB0F5E0008D90E /* RRThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRThirdViewController.m; sourceTree = "<group>"; };
 		9ACDA6CE19C49DFB00FA8081 /* RRAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRAudioPlayer.h; sourceTree = "<group>"; };
 		9ACDA6CF19C49DFB00FA8081 /* RRAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRAudioPlayer.m; sourceTree = "<group>"; };
+		BADD17B61B97324E0039D294 /* RRAudioTrackInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRAudioTrackInfo.h; sourceTree = "<group>"; };
+		BADD17B71B97324E0039D294 /* RRAudioTrackInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRAudioTrackInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,9 +138,10 @@
 				9A77153218D73DCF00174A16 /* Supporting Files */,
 				9ACDA6CE19C49DFB00FA8081 /* RRAudioPlayer.h */,
 				9ACDA6CF19C49DFB00FA8081 /* RRAudioPlayer.m */,
+				BADD17B61B97324E0039D294 /* RRAudioTrackInfo.h */,
+				BADD17B71B97324E0039D294 /* RRAudioTrackInfo.m */,
 			);
-			name = RadioRelaxFM;
-			path = "RadioRelaxFM";
+			path = RadioRelaxFM;
 			sourceTree = "<group>";
 		};
 		9A77153218D73DCF00174A16 /* Supporting Files */ = {
@@ -158,7 +162,7 @@
 				9A77155418D73DCF00174A16 /* Supporting Files */,
 			);
 			name = "RadioRelaxFM Tests";
-			path = "RadioRelaxFMTests";
+			path = RadioRelaxFMTests;
 			sourceTree = "<group>";
 		};
 		9A77155418D73DCF00174A16 /* Supporting Files */ = {
@@ -202,7 +206,7 @@
 			dependencies = (
 			);
 			name = RadioRelaxFM;
-			productName = "RadioRelaxFM";
+			productName = RadioRelaxFM;
 			productReference = 9A77152818D73DCF00174A16 /* RadioRelaxFM.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -220,7 +224,7 @@
 				9A77155218D73DCF00174A16 /* PBXTargetDependency */,
 			);
 			name = RadioRelaxFMTests;
-			productName = "RadioRelaxFMTests";
+			productName = RadioRelaxFMTests;
 			productReference = 9A77154C18D73DCF00174A16 /* RadioRelaxFMTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -292,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BADD17B81B97324E0039D294 /* RRAudioTrackInfo.m in Sources */,
 				9A77154218D73DCF00174A16 /* RRFirstViewController.m in Sources */,
 				9A77154518D73DCF00174A16 /* RRSecondViewController.m in Sources */,
 				9A77153818D73DCF00174A16 /* main.m in Sources */,

@@ -11,10 +11,11 @@
 #import "RRFirstViewController.h"
 #import "RRAppDelegate.h"
 #import "RRAudioPlayer.h"
-#include <Foundation/NSPort.h>
+#import "RRAudioTrackInfo.h"
 
 
 @interface RRFirstViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *audioTrackTitleLabel;
 
 @end
 
@@ -22,8 +23,9 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"View Did Load");
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	self.audioTrackTitleLabel.text = @"";
 }
 
 - (void)didReceiveMemoryWarning
@@ -33,8 +35,24 @@
 }
 
 - (IBAction)OnTestBtnTouchUp:(id)sender {
-    [[RRAudioPlayer getInstance] onPlayButtonTapUp];
+    [[RRAudioTrackInfo getInstance:self] onPlayButtonTapUp:[[RRAudioPlayer getInstance] onPlayButtonTapUp]];
 }
 
+- (void)onAudioTrackTitleUpdate:(NSString*)title
+{
+    NSLog(@"Receiving Audio Track Title: %@",title);
+    [self performSelectorOnMainThread:@selector(setAudioTrackTitle:) withObject:title waitUntilDone:NO];
+}
+
+- (void) setAudioTrackTitle: (NSString *)title
+{
+    NSLog(@"Displaying Audio Track Title: %@",title);
+    [self.audioTrackTitleLabel setText:title];
+}
+
+- (void)onAudioAlbumCoverUpdated
+{
+    
+}
 
 @end

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RRAudioTrackInfo.h"
 
-@interface RRFirstViewController : UIViewController
-
+@interface RRFirstViewController : UIViewController<OnAudioTrackInfoUpdatedProtocol>
+- (void)onAudioTrackTitleUpdate:(NSString*)title;
+- (void)onAudioAlbumCoverUpdated;
 @end

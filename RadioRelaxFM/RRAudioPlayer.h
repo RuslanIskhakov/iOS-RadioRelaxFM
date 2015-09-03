@@ -12,6 +12,6 @@
 @interface RRAudioPlayer : NSObject
 
 + (RRAudioPlayer*) getInstance;
-- (void) onPlayButtonTapUp;
+- (BOOL) onPlayButtonTapUp;
 
 @end

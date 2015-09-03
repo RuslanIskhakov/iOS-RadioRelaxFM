@@ -51,7 +51,7 @@ static RRAudioPlayer *instance=nil;
     return [super init];
 }
 
-- (void) onPlayButtonTapUp
+- (BOOL) onPlayButtonTapUp
 {
     if (self.isPlaying){
         self.isPlaying = NO;
@@ -65,6 +65,7 @@ static RRAudioPlayer *instance=nil;
         
         NSLog(@"Cmd Play");
     }
+    return self.isPlaying;
 }
 
 - (void) audioThreadMethod

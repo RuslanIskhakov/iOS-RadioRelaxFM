@@ -10,7 +10,7 @@
 
 @protocol OnAudioTrackInfoUpdatedProtocol
 - (void)onAudioTrackTitleUpdate:(NSString*)title;
-- (void)onAudioAlbumCoverUpdated;
+- (void)onAudioAlbumCoverUpdated: (UIImage*) cover;
 @end
 
 @interface RRAudioTrackInfo : NSObject <NSURLConnectionDelegate,NSURLConnectionDataDelegate>

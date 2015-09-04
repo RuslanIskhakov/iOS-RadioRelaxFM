@@ -11,5 +11,5 @@
 
 @interface RRFirstViewController : UIViewController<OnAudioTrackInfoUpdatedProtocol>
 - (void)onAudioTrackTitleUpdate:(NSString*)title;
-- (void)onAudioAlbumCoverUpdated;
+- (void)onAudioAlbumCoverUpdated:(UIImage*) cover;
 @end

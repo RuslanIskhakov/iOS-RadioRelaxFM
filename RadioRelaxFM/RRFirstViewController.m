@@ -16,6 +16,8 @@
 
 @interface RRFirstViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *audioTrackTitleLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *audioAlbumCoverImageView;
+
 
 @end
 
@@ -50,9 +52,16 @@
     [self.audioTrackTitleLabel setText:title];
 }
 
-- (void)onAudioAlbumCoverUpdated
+- (void)onAudioAlbumCoverUpdated:(UIImage*) cover
 {
-    
+    NSLog(@"Receiving Audio Album Cover Image");
+    [self performSelectorOnMainThread:@selector(setAudioAlbumCoverImage:) withObject:cover waitUntilDone:NO];
+}
+
+- (void)setAudioAlbumCoverImage:(UIImage*) cover
+{
+    NSLog(@"Displaying Audio Album Cover Image");
+    [self.audioAlbumCoverImageView setImage:cover];
 }
 
 @end

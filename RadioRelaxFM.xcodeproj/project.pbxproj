@@ -24,6 +24,7 @@
 		9A77155A18D73DCF00174A16 /* RadioRelaxFMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A77155918D73DCF00174A16 /* RadioRelaxFMTests.m */; };
 		9A77C0F419BB0F5E0008D90E /* RRThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A77C0F319BB0F5E0008D90E /* RRThirdViewController.m */; };
 		9ACDA6D019C49DFB00FA8081 /* RRAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACDA6CF19C49DFB00FA8081 /* RRAudioPlayer.m */; };
+		BAB21B291B997B9A0058BBDD /* RRAlbumCoverDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB21B281B997B9A0058BBDD /* RRAlbumCoverDownload.m */; };
 		BADD17B81B97324E0039D294 /* RRAudioTrackInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BADD17B71B97324E0039D294 /* RRAudioTrackInfo.m */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,8 @@
 		9A77C0F319BB0F5E0008D90E /* RRThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRThirdViewController.m; sourceTree = "<group>"; };
 		9ACDA6CE19C49DFB00FA8081 /* RRAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRAudioPlayer.h; sourceTree = "<group>"; };
 		9ACDA6CF19C49DFB00FA8081 /* RRAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRAudioPlayer.m; sourceTree = "<group>"; };
+		BAB21B271B997B9A0058BBDD /* RRAlbumCoverDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRAlbumCoverDownload.h; sourceTree = "<group>"; };
+		BAB21B281B997B9A0058BBDD /* RRAlbumCoverDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRAlbumCoverDownload.m; sourceTree = "<group>"; };
 		BADD17B61B97324E0039D294 /* RRAudioTrackInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRAudioTrackInfo.h; sourceTree = "<group>"; };
 		BADD17B71B97324E0039D294 /* RRAudioTrackInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRAudioTrackInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +143,8 @@
 				9ACDA6CF19C49DFB00FA8081 /* RRAudioPlayer.m */,
 				BADD17B61B97324E0039D294 /* RRAudioTrackInfo.h */,
 				BADD17B71B97324E0039D294 /* RRAudioTrackInfo.m */,
+				BAB21B271B997B9A0058BBDD /* RRAlbumCoverDownload.h */,
+				BAB21B281B997B9A0058BBDD /* RRAlbumCoverDownload.m */,
 			);
 			path = RadioRelaxFM;
 			sourceTree = "<group>";
@@ -301,6 +306,7 @@
 				9A77154518D73DCF00174A16 /* RRSecondViewController.m in Sources */,
 				9A77153818D73DCF00174A16 /* main.m in Sources */,
 				9A77153C18D73DCF00174A16 /* RRAppDelegate.m in Sources */,
+				BAB21B291B997B9A0058BBDD /* RRAlbumCoverDownload.m in Sources */,
 				9ACDA6D019C49DFB00FA8081 /* RRAudioPlayer.m in Sources */,
 				9A77C0F419BB0F5E0008D90E /* RRThirdViewController.m in Sources */,
 			);

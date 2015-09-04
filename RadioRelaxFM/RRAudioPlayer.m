@@ -106,6 +106,7 @@ static RRAudioPlayer *instance=nil;
         
         
         [self.audioPlayer pause];
+        self.audioPlayer = nil;
         //audioSession = [AVAudioSession sharedInstance];
         NSError *deactivationError = nil;
         success = [audioSession setActive:NO error:&deactivationError];
@@ -133,9 +134,6 @@ static RRAudioPlayer *instance=nil;
             }
         } break;
         case AVAudioSessionInterruptionTypeEnded:{
-            // • Make session active
-            // • Update user interface
-            // • AVAudioSessionInterruptionOptionShouldResume option
             if (interruptionOption.unsignedIntegerValue == AVAudioSessionInterruptionOptionShouldResume) {
                 NSLog(@"Audio Interruption End");
                 if (self.isPlaying){

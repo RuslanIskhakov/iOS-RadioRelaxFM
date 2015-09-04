@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -27,23 +28,36 @@
                                     <action selector="OnTestBtnTouchUp:" destination="CZ4-MO-1fc" eventType="touchUpInside" id="L9h-He-9Io"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cm8-sN-cE3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cm8-sN-cE3">
                                 <rect key="frame" x="139" y="434" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="music_disc" translatesAutoresizingMaskIntoConstraints="NO" id="Mt0-e5-7zZ">
+                                <rect key="frame" x="40" y="65" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Mt0-e5-7zZ" secondAttribute="height" multiplier="1:1" id="AnB-kc-5fg"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rMS-kt-VNe" firstAttribute="top" secondItem="cm8-sN-cE3" secondAttribute="bottom" constant="18" id="eqo-cY-g66"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cm8-sN-cE3" secondAttribute="trailing" constant="15" id="taE-A3-SlS"/>
+                            <constraint firstItem="qgp-9d-Aap" firstAttribute="top" secondItem="rMS-kt-VNe" secondAttribute="bottom" constant="20" id="1lL-gD-kre"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Mt0-e5-7zZ" secondAttribute="trailing" constant="10" id="Bcw-QP-MFs"/>
+                            <constraint firstItem="cm8-sN-cE3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Mt0-e5-7zZ" secondAttribute="bottom" constant="20" id="UOJ-Yr-N8U"/>
+                            <constraint firstItem="Mt0-e5-7zZ" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leadingMargin" constant="10" id="cys-bK-vJT"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="cm8-sN-cE3" secondAttribute="trailing" constant="15" id="taE-A3-SlS"/>
                             <constraint firstAttribute="centerX" secondItem="cm8-sN-cE3" secondAttribute="centerX" id="uJi-Yi-opo"/>
-                            <constraint firstItem="cm8-sN-cE3" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leadingMargin" constant="15" id="wFq-HN-a31"/>
+                            <constraint firstItem="cm8-sN-cE3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2VE-Yg-loa" secondAttribute="leadingMargin" constant="15" id="wFq-HN-a31"/>
+                            <constraint firstItem="Mt0-e5-7zZ" firstAttribute="top" secondItem="w1w-iW-hMD" secondAttribute="bottom" constant="40" id="wj5-zu-ISb"/>
+                            <constraint firstItem="qgp-9d-Aap" firstAttribute="top" secondItem="cm8-sN-cE3" secondAttribute="bottom" constant="64" id="zy5-gE-HAp"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Now Playing" image="first" id="u1e-5L-l1D"/>
                     <connections>
+                        <outlet property="audioAlbumCoverImage" destination="Mt0-e5-7zZ" id="s5r-Iy-aPY"/>
+                        <outlet property="audioAlbumCoverImageView" destination="Mt0-e5-7zZ" id="JEY-sa-a3S"/>
                         <outlet property="audioTrackTitleLabel" destination="cm8-sN-cE3" id="akW-cR-iGF"/>
                     </connections>
                 </viewController>
@@ -137,6 +151,7 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
+        <image name="music_disc" width="639" height="640"/>
         <image name="second" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

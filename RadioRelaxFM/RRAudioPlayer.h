@@ -13,5 +13,6 @@
 
 + (RRAudioPlayer*) getInstance;
 - (BOOL) onPlayButtonTapUp;
+@property (atomic, readonly) BOOL isPlaying;
 
 @end

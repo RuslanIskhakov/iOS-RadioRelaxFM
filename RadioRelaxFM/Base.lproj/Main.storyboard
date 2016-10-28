@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--First-->
@@ -16,37 +17,39 @@
                         <viewControllerLayoutGuide type="bottom" id="qgp-9d-Aap"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2VE-Yg-loa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMS-kt-VNe">
-                                <rect key="frame" x="118" y="473" width="84" height="30"/>
-                                <state key="normal" title="Play">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMS-kt-VNe">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="TUu-YU-JTD"/>
+                                    <constraint firstAttribute="width" constant="50" id="gGy-gZ-hSz"/>
+                                </constraints>
+                                <state key="normal" image="btn_play">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="OnTestBtnTouchUp:" destination="CZ4-MO-1fc" eventType="touchUpInside" id="L9h-He-9Io"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cm8-sN-cE3">
-                                <rect key="frame" x="139" y="434" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="music_disc" translatesAutoresizingMaskIntoConstraints="NO" id="Mt0-e5-7zZ">
-                                <rect key="frame" x="40" y="65" width="240" height="240"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music_disc" translatesAutoresizingMaskIntoConstraints="NO" id="Mt0-e5-7zZ">
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Mt0-e5-7zZ" secondAttribute="height" multiplier="1:1" id="AnB-kc-5fg"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="qgp-9d-Aap" firstAttribute="top" secondItem="rMS-kt-VNe" secondAttribute="bottom" constant="20" id="1lL-gD-kre"/>
+                            <constraint firstItem="qgp-9d-Aap" firstAttribute="top" secondItem="rMS-kt-VNe" secondAttribute="bottom" constant="8" symbolic="YES" id="1lL-gD-kre"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Mt0-e5-7zZ" secondAttribute="trailing" constant="10" id="Bcw-QP-MFs"/>
                             <constraint firstItem="cm8-sN-cE3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Mt0-e5-7zZ" secondAttribute="bottom" constant="20" id="UOJ-Yr-N8U"/>
                             <constraint firstItem="Mt0-e5-7zZ" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leadingMargin" constant="10" id="cys-bK-vJT"/>
+                            <constraint firstAttribute="centerX" secondItem="rMS-kt-VNe" secondAttribute="centerX" id="oZF-Gb-Pwe"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="cm8-sN-cE3" secondAttribute="trailing" constant="15" id="taE-A3-SlS"/>
                             <constraint firstAttribute="centerX" secondItem="cm8-sN-cE3" secondAttribute="centerX" id="uJi-Yi-opo"/>
                             <constraint firstItem="cm8-sN-cE3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2VE-Yg-loa" secondAttribute="leadingMargin" constant="15" id="wFq-HN-a31"/>
@@ -58,12 +61,13 @@
                     <connections>
                         <outlet property="audioAlbumCoverImage" destination="Mt0-e5-7zZ" id="s5r-Iy-aPY"/>
                         <outlet property="audioAlbumCoverImageView" destination="Mt0-e5-7zZ" id="JEY-sa-a3S"/>
+                        <outlet property="audioControlBtn" destination="rMS-kt-VNe" id="4Gg-ng-cRr"/>
                         <outlet property="audioTrackTitleLabel" destination="cm8-sN-cE3" id="akW-cR-iGF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qh2-T1-AhA" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="653" y="-173"/>
+            <point key="canvasLocation" x="1044.8" y="-155.62218890554723"/>
         </scene>
         <!--Item-->
         <scene sceneID="lsP-S8-vDT">
@@ -74,15 +78,15 @@
                         <viewControllerLayoutGuide type="bottom" id="J0Q-eQ-e0a"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NjI-5D-Vgs">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="2hT-gE-sYk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvY-p5-qnE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1269" y="514"/>
+            <point key="canvasLocation" x="2030.4000000000001" y="462.36881559220393"/>
         </scene>
         <!--Second-->
         <scene sceneID="ot8-2e-RuS">
@@ -93,18 +97,16 @@
                         <viewControllerLayoutGuide type="bottom" id="n2M-Rk-peA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gMD-aP-Fq6">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="29h-N2-YGT">
-                                <rect key="frame" x="20" y="158" width="280" height="42"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" editable="NO" text="Loaded by the second view controller — an instance of RRSecondViewController — specified in the app delegate." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="DcM-Fx-MKR">
-                                <rect key="frame" x="20" y="240" width="280" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="88" id="9fN-Zf-E0i"/>
                                 </constraints>
@@ -112,7 +114,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="29h-N2-YGT" firstAttribute="leading" secondItem="gMD-aP-Fq6" secondAttribute="leading" constant="20" symbolic="YES" id="4te-rk-9Fp"/>
                             <constraint firstAttribute="trailing" secondItem="29h-N2-YGT" secondAttribute="trailing" constant="20" symbolic="YES" id="FIx-Zl-RBr"/>
@@ -126,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="645" y="582"/>
+            <point key="canvasLocation" x="1032" y="523.53823088455772"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
@@ -136,7 +138,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="JQR-rB-NYL">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="CZ4-MO-1fc" kind="relationship" relationship="viewControllers" id="SUk-Ux-ee1"/>
@@ -146,17 +148,13 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="170" y="-173"/>
+            <point key="canvasLocation" x="272" y="-155.62218890554723"/>
         </scene>
     </scenes>
     <resources>
+        <image name="btn_play" width="50" height="50"/>
         <image name="first" width="30" height="30"/>
         <image name="music_disc" width="639" height="640"/>
         <image name="second" width="30" height="30"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

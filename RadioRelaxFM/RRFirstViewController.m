@@ -17,6 +17,7 @@
 @interface RRFirstViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *audioTrackTitleLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *audioAlbumCoverImageView;
+@property (strong, nonatomic) IBOutlet UIButton *audioControlBtn;
 
 
 @end
@@ -37,7 +38,13 @@
 }
 
 - (IBAction)OnTestBtnTouchUp:(id)sender {
-    [[RRAudioTrackInfo getInstance:self] onPlayButtonTapUp:[[RRAudioPlayer getInstance] onPlayButtonTapUp]];
+    BOOL isPlaying = [[RRAudioPlayer getInstance] onPlayButtonTapUp];
+    [[RRAudioTrackInfo getInstance:self] onPlayButtonTapUp:isPlaying];
+    if (isPlaying){
+        [self.audioControlBtn setImage:[UIImage imageNamed:@"btn_pause"] forState:UIControlStateNormal];
+    } else {
+        [self.audioControlBtn setImage:[UIImage imageNamed:@"btn_play"] forState:UIControlStateNormal];
+    }
 }
 
 - (void)onAudioTrackTitleUpdate:(NSString*)title

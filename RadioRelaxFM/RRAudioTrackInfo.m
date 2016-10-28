@@ -154,13 +154,13 @@ static RRAudioTrackInfo *instance=nil;
     @try{
         NSError *error;
         NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:self.bytesData options:kNilOptions error:&error];
-    
+        
         if (error != nil) {
             NSLog(@"Error: %@", [error localizedDescription]);
         }else{
             if (0==[[returnedDict objectForKey:STATUS_KEY] intValue] && 0==[[returnedDict objectForKey:ERROR_CODE_KEY] intValue]){
                 id result = [returnedDict objectForKey:RESULT_KEY];
-                if ([result isKindOfClass:[NSMutableDictionary class]]) {
+                if ([result isKindOfClass:[NSDictionary class]]) {
                     NSString *audioTrackTitle = [NSString stringWithFormat:@"%@ - %@",[result objectForKey:EXECUTOR_TITLE_KEY],[result objectForKey:TITLE_KEY]];
                     if (self.delegate) {
                         [self.delegate onAudioTrackTitleUpdate:audioTrackTitle];
@@ -170,11 +170,15 @@ static RRAudioTrackInfo *instance=nil;
                         self.prevTrackTitle = audioTrackTitle;
                         self.coverDownloader = [[RRAlbumCoverDownload alloc] initWithDelegate:self.delegate andTrackTitle:self.prevTrackTitle];
                     }
+                } else {
+                    NSLog(@"actually is a class: %@", [result class]);
                 }
             } else {
                 NSLog(@"Status: %d, Error: %d", [[returnedDict objectForKey:STATUS_KEY] intValue], [[returnedDict objectForKey:ERROR_CODE_KEY] intValue]);
             }
         }
-    }@catch(NSException *e) {}
+    }@catch(NSException *e) {
+        NSLog(@"Exception: %@", [e description]);
+    }
 }
 @end

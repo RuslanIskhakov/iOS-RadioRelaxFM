@@ -51,4 +51,29 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event
+{
+    if(event.type == UIEventTypeRemoteControl)
+    {
+        switch(event.subtype)
+        {
+            case UIEventSubtypeRemoteControlPause:
+                NSLog(@"ControlPause");
+                break;
+            case UIEventSubtypeRemoteControlStop:
+                NSLog(@"ControlStop");
+                break;
+            case UIEventSubtypeRemoteControlPlay:
+                NSLog(@"ControlPlay");
+                break;
+            case UIEventSubtypeRemoteControlTogglePlayPause:
+                NSLog(@"TogglePlayPause");
+                break;
+            default:
+                NSLog(@"default");
+                break;
+        }
+    }
+}
+
 @end

@@ -64,8 +64,50 @@ static RRAudioPlayer *instance=nil;
                                withObject:nil];
         
         NSLog(@"Cmd Play");
+        
+        //[self configureRemoteControl];
     }
     return self.isPlaying;
+}
+
+- (void) configureRemoteControl
+{
+    MPRemoteCommandCenter *commandCenter = [MPRemoteCommandCenter sharedCommandCenter];
+    
+    commandCenter.playCommand.enabled = YES;
+    commandCenter.pauseCommand.enabled = YES;
+    
+    [commandCenter.playCommand addTarget:self action:@selector(onRemotePlayCmd)];
+    [commandCenter.pauseCommand addTarget:self action:@selector(onRemotePauseCmd)];
+}
+
+- (void)configureNowPlayingInfo:(MPMediaItem*)item
+{
+    MPNowPlayingInfoCenter* info = [MPNowPlayingInfoCenter defaultCenter];
+    NSMutableDictionary* newInfo = [NSMutableDictionary dictionary];
+    NSSet* itemProperties = [NSSet setWithObjects:MPMediaItemPropertyTitle,
+                             MPMediaItemPropertyArtist,
+                             MPMediaItemPropertyPlaybackDuration,
+                             MPNowPlayingInfoPropertyElapsedPlaybackTime,
+                             nil];
+    
+    [item enumerateValuesForProperties:itemProperties
+                            usingBlock:^(NSString *property, id value, BOOL *stop) {
+                                NSLog(@"Requesting info: %@",property);
+                                [newInfo setObject:value forKey:property];
+                            }];
+    
+    info.nowPlayingInfo = newInfo;
+}
+
+- (void) onRemotePlayCmd
+{
+    NSLog(@"onRemotePlayCmd");
+}
+
+- (void) onRemotePauseCmd
+{
+    NSLog(@"onRemoteStopCmd");
 }
 
 - (void) audioThreadMethod
@@ -81,6 +123,9 @@ static RRAudioPlayer *instance=nil;
         BOOL success = [audioSession setCategory:AVAudioSessionCategoryPlayback
                                      withOptions:AVAudioSessionCategoryOptionMixWithOthers
                                            error:&setCategoryError];
+        
+        //[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+        
         if (!success) { return; }
         
         success = [audioSession setMode:AVAudioSessionModeDefault error:&setCategoryError];

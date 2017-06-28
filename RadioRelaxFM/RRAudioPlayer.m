@@ -34,7 +34,7 @@ static RRAudioPlayer *instance=nil;
 - (AVPlayer *)audioPlayer
 {
     if (!_audioPlayer) {
-        NSString *urlString = @"http://101.ru/m101.php?uid=200";
+        NSString *urlString = @"http://101.ru/api/channel/getServers/200/channel/MP3/128/dataFormat/mobile";
         NSURL *url = [NSURL URLWithString:urlString];
         _audioPlayer = [[AVPlayer alloc] initWithURL:url];
         if (!_audioPlayer) NSLog(@"NULL!!!");
@@ -146,6 +146,7 @@ static RRAudioPlayer *instance=nil;
         do {
             @autoreleasepool {
                 [runLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+                [NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
             }
         } while (self.isPlaying);
         

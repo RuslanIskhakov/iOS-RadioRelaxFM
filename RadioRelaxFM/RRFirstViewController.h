@@ -10,7 +10,6 @@
 #import "RRAudioTrackInfo.h"
 
 @interface RRFirstViewController : UIViewController<OnAudioTrackInfoUpdatedProtocol>
-@property (atomic, readonly) BOOL isPlaying;
 - (void)onAudioTrackTitleUpdate:(NSString*)title;
 - (void)onAudioAlbumCoverUpdated:(UIImage*) cover;
 @end

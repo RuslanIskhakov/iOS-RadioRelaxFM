@@ -14,8 +14,8 @@
 
 @interface RRFirstViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *audioTrackTitleLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *audioAlbumCoverImageView;
-@property (strong, nonatomic) IBOutlet UIButton *audioControlBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *audioAlbumCoverImageView;
+@property (weak, nonatomic) IBOutlet UIButton *audioControlBtn;
 
 
 @end

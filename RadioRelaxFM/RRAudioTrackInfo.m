@@ -18,10 +18,10 @@
 
 @interface RRAudioTrackInfo()
 @property (atomic) BOOL isRunning;
-@property (strong) NSMutableData *bytesData;
-@property (strong, atomic) id<OnAudioTrackInfoUpdatedProtocol> delegate;
+@property (strong, nonatomic) NSMutableData *bytesData;
+@property (weak, nonatomic) id<OnAudioTrackInfoUpdatedProtocol> delegate;
 @property (strong, nonatomic) NSString *prevTrackTitle;
-@property (strong) RRAlbumCoverDownload *coverDownloader;
+@property (strong, nonatomic) RRAlbumCoverDownload *coverDownloader;
 @end
 
 static RRAudioTrackInfo *sharedInstance=nil;

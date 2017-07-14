@@ -17,8 +17,8 @@
 
 @interface RRAlbumCoverDownload()
 
-@property (strong, atomic) id<OnAudioTrackInfoUpdatedProtocol> delegate;
-@property (strong) NSMutableData *bytesData;
+@property (weak, nonatomic) id<OnAudioTrackInfoUpdatedProtocol> delegate;
+@property (strong, nonatomic) NSMutableData *bytesData;
 @property (atomic) BOOL isRunning;
 
 @end

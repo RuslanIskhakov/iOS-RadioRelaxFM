@@ -27,12 +27,19 @@
 
 -(instancetype) initWithDelegate:(id<OnAudioTrackInfoUpdatedProtocol>) delegate andTrackTitle:(NSString*) title
 {
-    self.delegate = delegate;
-    self.isRunning = YES;
-    [NSThread detachNewThreadSelector:@selector(downloadAlbumCover:)
-                             toTarget:self
-                           withObject:title];
-    return [super init];
+    self = [super init];
+    if (self) {
+        self.delegate = delegate;
+        self.isRunning = YES;
+        [NSThread detachNewThreadSelector:@selector(downloadAlbumCover:)
+                                 toTarget:self
+                               withObject:title];
+    }
+    return self;
+}
+
+-(void) cancel {
+    self.isRunning = NO;
 }
 
 -(void) downloadAlbumCover:(NSString*) title
@@ -107,6 +114,7 @@
         do {
             @autoreleasepool {
                 [runLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:5]];
+                [NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
             }
         } while (self.isRunning);
         

@@ -11,4 +11,5 @@
 
 @interface RRAlbumCoverDownload : NSObject <NSURLConnectionDelegate,NSURLConnectionDataDelegate>
 -(instancetype) initWithDelegate:(id<OnAudioTrackInfoUpdatedProtocol>) delegate andTrackTitle:(NSString*) title;
+-(void)cancel;
 @end

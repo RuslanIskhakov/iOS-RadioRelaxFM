@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Deltasoft. All rights reserved.
 //
 
+
 #import "RRAudioPlayer.h"
 
 @interface RRAudioPlayer()
@@ -13,22 +14,22 @@
 @property (atomic) BOOL isPlaying;
 @end
 
-static RRAudioPlayer *instance=nil;
+static RRAudioPlayer *sharedInstance=nil;
 
 @implementation RRAudioPlayer
 
 //http://stackoverflow.com/questions/9276546/can-not-restart-an-interrupted-audio-input-queue-in-background-mode-on-ios
 
-+ (RRAudioPlayer*)getInstance
++ (RRAudioPlayer*)sharedInstance
 {
-    @synchronized(self)
+    if(sharedInstance==nil)
     {
-        if(instance==nil)
-        {
-            instance= [[RRAudioPlayer alloc] init];
-        }
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            sharedInstance = [[RRAudioPlayer alloc] init];
+        });
     }
-    return instance;
+    return sharedInstance;
 }
 
 - (AVPlayer *)audioPlayer
@@ -47,8 +48,11 @@ static RRAudioPlayer *instance=nil;
 - (instancetype) init
 {
     NSLog(@"RRAudioPlayer Init");
-    self.isPlaying = NO;
-    return [super init];
+    self = [super init];
+    if (self) {
+        self.isPlaying = NO;
+    }
+    return self;
 }
 
 - (BOOL) onPlayButtonTapUp
@@ -119,21 +123,27 @@ static RRAudioPlayer *instance=nil;
         
         AVAudioSession *audioSession = [AVAudioSession sharedInstance];
         
-        NSError *setCategoryError = nil;
+        NSError *audioSessionError = nil;
         BOOL success = [audioSession setCategory:AVAudioSessionCategoryPlayback
                                      withOptions:AVAudioSessionCategoryOptionMixWithOthers
-                                           error:&setCategoryError];
+                                           error:&audioSessionError];
         
-        //[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+        if (!success) {
+            if (audioSessionError) NSLog(@"Set category error: %@",audioSessionError.localizedDescription);
+            return;
+        }
         
-        if (!success) { return; }
+        success = [audioSession setMode:AVAudioSessionModeDefault error:&audioSessionError];
+        if (!success) {
+            if (audioSessionError) NSLog(@"Set mode error: %@",audioSessionError.localizedDescription);
+            return;
+        }
         
-        success = [audioSession setMode:AVAudioSessionModeDefault error:&setCategoryError];
-        if (!success) { return; }
-        
-        NSError *activationError = nil;
-        success = [audioSession setActive:YES error:&activationError];
-        if (!success) { return; }
+        success = [audioSession setActive:YES error:&audioSessionError];
+        if (!success) {
+            if (audioSessionError) NSLog(@"Set active error: %@",audioSessionError.localizedDescription);
+            return;
+        }
         
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         [nc addObserver:self
@@ -153,14 +163,12 @@ static RRAudioPlayer *instance=nil;
         
         [self.audioPlayer pause];
         self.audioPlayer = nil;
-        //audioSession = [AVAudioSession sharedInstance];
-        NSError *deactivationError = nil;
-        success = [audioSession setActive:NO error:&deactivationError];
+        audioSession = [AVAudioSession sharedInstance];
+        success = [audioSession setActive:NO error:&audioSessionError];
         if (!success) {
-            NSLog(@"@Audio Session deactivation error: %@",deactivationError.debugDescription);
+            NSLog(@"@Audio Session deactivation error: %@", audioSessionError.localizedDescription);
         }
         
-        //NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         [nc removeObserver:self];
         
         NSLog(@"Audio Thread is stopping");
@@ -174,29 +182,31 @@ static RRAudioPlayer *instance=nil;
     
     switch (interruptionType.unsignedIntegerValue) {
         case AVAudioSessionInterruptionTypeBegan:{
-            NSLog(@"Audio Interruption Begin");
-            if (self.isPlaying){
-                [self.audioPlayer pause];
-            }
-        } break;
-        case AVAudioSessionInterruptionTypeEnded:{
-            if (interruptionOption.unsignedIntegerValue == AVAudioSessionInterruptionOptionShouldResume) {
-                NSLog(@"Audio Interruption End");
+                NSLog(@"Audio Interruption Begin");
                 if (self.isPlaying){
-                    
-                    int status = self.audioPlayer.status;
-                    if (AVPlayerStatusFailed==status) {
-                        NSLog(@"Status: Failed");
-                    } else if (AVPlayerStatusReadyToPlay==status) {
-                        NSLog(@"Status: Ready To Play");
-                    } else if (AVPlayerStatusUnknown==status) {
-                        NSLog(@"Status: Uknown");
-                    }
-                    
-                    [self.audioPlayer play];
+                    [self.audioPlayer pause];
                 }
             }
-        } break;
+            break;
+        case AVAudioSessionInterruptionTypeEnded:{
+                if (interruptionOption.unsignedIntegerValue == AVAudioSessionInterruptionOptionShouldResume) {
+                    NSLog(@"Audio Interruption End");
+                    if (self.isPlaying){
+                        
+                        int status = self.audioPlayer.status;
+                        if (AVPlayerStatusFailed==status) {
+                            NSLog(@"Status: Failed");
+                        } else if (AVPlayerStatusReadyToPlay==status) {
+                            NSLog(@"Status: Ready To Play");
+                        } else if (AVPlayerStatusUnknown==status) {
+                            NSLog(@"Status: Uknown");
+                        }
+                        
+                        [self.audioPlayer play];
+                    }
+                }
+            }
+            break;
         default:
             break;
     }

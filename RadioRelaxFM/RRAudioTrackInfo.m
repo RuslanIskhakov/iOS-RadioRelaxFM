@@ -24,27 +24,30 @@
 @property (strong) RRAlbumCoverDownload *coverDownloader;
 @end
 
-static RRAudioTrackInfo *instance=nil;
+static RRAudioTrackInfo *sharedInstance=nil;
 
 @implementation RRAudioTrackInfo
 
-+ (RRAudioTrackInfo*)getInstance: (id<OnAudioTrackInfoUpdatedProtocol>) delegate
++ (RRAudioTrackInfo*)sharedInstance: (id<OnAudioTrackInfoUpdatedProtocol>) delegate
 {
-    @synchronized(self)
+    if(sharedInstance==nil)
     {
-        if(instance==nil)
-        {
-            instance= [[RRAudioTrackInfo alloc] init];
-        }
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            sharedInstance = [[RRAudioTrackInfo alloc] init];
+        });
     }
-    instance.delegate = delegate;
-    return instance;
+    sharedInstance.delegate = delegate;
+    return sharedInstance;
 }
 
 -(instancetype) init
 {
-    self.isRunning = NO;
-    return [super init];
+    self = [super init];
+    if (self) {
+        self.isRunning = NO;
+    }
+    return self;
 }
 
 - (NSString*)prevTrackTitle
@@ -83,6 +86,7 @@ static RRAudioTrackInfo *instance=nil;
         do {
             @autoreleasepool {
                 [runLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+                [NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
             }
         } while (self.isRunning);
         
@@ -168,6 +172,7 @@ static RRAudioTrackInfo *instance=nil;
                 
                     if (![self.prevTrackTitle isEqualToString:audioTrackTitle]) {
                         self.prevTrackTitle = audioTrackTitle;
+                        if (self.coverDownloader) [self.coverDownloader cancel];
                         self.coverDownloader = [[RRAlbumCoverDownload alloc] initWithDelegate:self.delegate andTrackTitle:self.prevTrackTitle];
                     }
                 } else {

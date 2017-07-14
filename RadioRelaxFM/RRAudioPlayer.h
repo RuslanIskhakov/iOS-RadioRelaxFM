@@ -12,7 +12,7 @@
 
 @interface RRAudioPlayer : NSObject
 
-+ (RRAudioPlayer*) getInstance;
++ (RRAudioPlayer*) sharedInstance;
 - (BOOL) onPlayButtonTapUp;
 @property (atomic, readonly) BOOL isPlaying;
 

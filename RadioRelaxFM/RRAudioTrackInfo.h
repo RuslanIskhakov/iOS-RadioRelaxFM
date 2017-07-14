@@ -15,7 +15,7 @@
 
 @interface RRAudioTrackInfo : NSObject <NSURLConnectionDelegate,NSURLConnectionDataDelegate>
 
-+ (RRAudioTrackInfo*) getInstance: (id<OnAudioTrackInfoUpdatedProtocol>) delegate;
++ (RRAudioTrackInfo*) sharedInstance: (id<OnAudioTrackInfoUpdatedProtocol>) delegate;
 - (void) onPlayButtonTapUp: (BOOL) isPlaying;
 
 @end

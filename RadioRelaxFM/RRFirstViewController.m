@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Deltasoft. All rights reserved.
 //
 
-#define kCheckinMessage 100
-
 #import "RRFirstViewController.h"
 #import "RRAppDelegate.h"
 #import "RRAudioPlayer.h"
@@ -24,11 +22,27 @@
 
 @implementation RRFirstViewController
 
+//+FIXME: check covers are legal
+//+FIXME: check classes
+//+FIXME: check player's state on view appearence
+//FIXME: check strong/weak, atomic/nonatomic
+//FIXME: move constants to dedicated class
+//FIXME: add calls to NSLog from exception catchers
+//FIXME: update icons drwables, create UI for iPad,
+//FIXME: build from console
+
 - (void)viewDidLoad
 {
     NSLog(@"View Did Load");
     [super viewDidLoad];
 	self.audioTrackTitleLabel.text = @"";
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    NSLog(@"View Did Appear");
+    [super viewDidAppear:animated];
+    BOOL isPlaying = [RRAudioPlayer sharedInstance].isPlaying;
+    [self updatePlayPauseButton:isPlaying];
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,9 +51,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)OnTestBtnTouchUp:(id)sender {
-    BOOL isPlaying = [[RRAudioPlayer getInstance] onPlayButtonTapUp];
-    [[RRAudioTrackInfo getInstance:self] onPlayButtonTapUp:isPlaying];
+- (IBAction)onPlayPauseBtnTouchUp:(id)sender {
+    BOOL isPlaying = [[RRAudioPlayer sharedInstance] onPlayButtonTapUp];
+    [[RRAudioTrackInfo sharedInstance:self] onPlayButtonTapUp:isPlaying];
+    [self updatePlayPauseButton:isPlaying];
+}
+
+- (void) updatePlayPauseButton:(BOOL)isPlaying {
     if (isPlaying){
         [self.audioControlBtn setImage:[UIImage imageNamed:@"btn_pause"] forState:UIControlStateNormal];
     } else {

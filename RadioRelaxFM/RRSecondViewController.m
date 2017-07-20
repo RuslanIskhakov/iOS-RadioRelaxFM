@@ -9,6 +9,7 @@
 #import "RRSecondViewController.h"
 
 @interface RRSecondViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *versionText;
 
 @end
 
@@ -17,7 +18,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    [self.versionText setText:@"Ver 1.0"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -25,5 +26,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)openOfficialWebSite:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://relax-fm.ru"]];
+}
+
 
 @end

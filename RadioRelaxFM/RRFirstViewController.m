@@ -25,7 +25,7 @@
 //+FIXME: check covers are legal
 //+FIXME: check classes
 //+FIXME: check player's state on view appearence
-//FIXME: check strong/weak, atomic/nonatomic
+//+FIXME: check strong/weak, atomic/nonatomic
 //FIXME: move constants to dedicated class
 //FIXME: add calls to NSLog from exception catchers
 //FIXME: update icons drwables, create UI for iPad,

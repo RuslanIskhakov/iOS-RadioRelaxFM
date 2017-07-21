@@ -13,7 +13,7 @@
 		9A77153618D73DCF00174A16 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A77153418D73DCF00174A16 /* InfoPlist.strings */; };
 		9A77153818D73DCF00174A16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A77153718D73DCF00174A16 /* main.m */; };
 		9A77153C18D73DCF00174A16 /* RRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A77153B18D73DCF00174A16 /* RRAppDelegate.m */; };
-		9A77153F18D73DCF00174A16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A77153D18D73DCF00174A16 /* Main.storyboard */; };
+		9A77153F18D73DCF00174A16 /* UI_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A77153D18D73DCF00174A16 /* UI_iPhone.storyboard */; };
 		9A77154218D73DCF00174A16 /* RRFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A77154118D73DCF00174A16 /* RRFirstViewController.m */; };
 		9A77154518D73DCF00174A16 /* RRSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A77154418D73DCF00174A16 /* RRSecondViewController.m */; };
 		9A77154718D73DCF00174A16 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A77154618D73DCF00174A16 /* Images.xcassets */; };
@@ -26,6 +26,7 @@
 		9ACDA6D019C49DFB00FA8081 /* RRAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACDA6CF19C49DFB00FA8081 /* RRAudioPlayer.m */; };
 		BAB21B291B997B9A0058BBDD /* RRAlbumCoverDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB21B281B997B9A0058BBDD /* RRAlbumCoverDownload.m */; };
 		BADD17B81B97324E0039D294 /* RRAudioTrackInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BADD17B71B97324E0039D294 /* RRAudioTrackInfo.m */; };
+		BAE3F6F11F20A69E00E218BC /* UI_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAE3F6EF1F20A69E00E218BC /* UI_iPad.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +50,7 @@
 		9A77153918D73DCF00174A16 /* RadioRelaxFM-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RadioRelaxFM-Prefix.pch"; sourceTree = "<group>"; };
 		9A77153A18D73DCF00174A16 /* RRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RRAppDelegate.h; sourceTree = "<group>"; };
 		9A77153B18D73DCF00174A16 /* RRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RRAppDelegate.m; sourceTree = "<group>"; };
-		9A77153E18D73DCF00174A16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9A77153E18D73DCF00174A16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UI_iPhone.storyboard; sourceTree = "<group>"; };
 		9A77154018D73DCF00174A16 /* RRFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RRFirstViewController.h; sourceTree = "<group>"; };
 		9A77154118D73DCF00174A16 /* RRFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RRFirstViewController.m; sourceTree = "<group>"; };
 		9A77154318D73DCF00174A16 /* RRSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RRSecondViewController.h; sourceTree = "<group>"; };
@@ -68,6 +69,7 @@
 		BAB21B281B997B9A0058BBDD /* RRAlbumCoverDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRAlbumCoverDownload.m; sourceTree = "<group>"; };
 		BADD17B61B97324E0039D294 /* RRAudioTrackInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRAudioTrackInfo.h; sourceTree = "<group>"; };
 		BADD17B71B97324E0039D294 /* RRAudioTrackInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRAudioTrackInfo.m; sourceTree = "<group>"; };
+		BAE3F6F01F20A69E00E218BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UI_iPad.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +134,7 @@
 				9A77C0F319BB0F5E0008D90E /* RRThirdViewController.m */,
 				9A77153A18D73DCF00174A16 /* RRAppDelegate.h */,
 				9A77153B18D73DCF00174A16 /* RRAppDelegate.m */,
-				9A77153D18D73DCF00174A16 /* Main.storyboard */,
+				9A77153D18D73DCF00174A16 /* UI_iPhone.storyboard */,
 				9A77154018D73DCF00174A16 /* RRFirstViewController.h */,
 				9A77154118D73DCF00174A16 /* RRFirstViewController.m */,
 				9A77154418D73DCF00174A16 /* RRSecondViewController.m */,
@@ -145,6 +147,7 @@
 				BADD17B71B97324E0039D294 /* RRAudioTrackInfo.m */,
 				BAB21B271B997B9A0058BBDD /* RRAlbumCoverDownload.h */,
 				BAB21B281B997B9A0058BBDD /* RRAlbumCoverDownload.m */,
+				BAE3F6EF1F20A69E00E218BC /* UI_iPad.storyboard */,
 			);
 			path = RadioRelaxFM;
 			sourceTree = "<group>";
@@ -283,9 +286,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAE3F6F11F20A69E00E218BC /* UI_iPad.storyboard in Resources */,
 				9A77154718D73DCF00174A16 /* Images.xcassets in Resources */,
 				9A77153618D73DCF00174A16 /* InfoPlist.strings in Resources */,
-				9A77153F18D73DCF00174A16 /* Main.storyboard in Resources */,
+				9A77153F18D73DCF00174A16 /* UI_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,12 +346,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		9A77153D18D73DCF00174A16 /* Main.storyboard */ = {
+		9A77153D18D73DCF00174A16 /* UI_iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9A77153E18D73DCF00174A16 /* Base */,
 			);
-			name = Main.storyboard;
+			name = UI_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 		9A77155618D73DCF00174A16 /* InfoPlist.strings */ = {
@@ -356,6 +360,14 @@
 				9A77155718D73DCF00174A16 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BAE3F6EF1F20A69E00E218BC /* UI_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BAE3F6F01F20A69E00E218BC /* Base */,
+			);
+			name = UI_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -400,7 +412,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -438,7 +450,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -454,10 +466,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RadioRelaxFM/RadioRelaxFM-Prefix.pch";
 				INFOPLIST_FILE = "RadioRelaxFM/RadioRelaxFM-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ds.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -472,10 +485,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RadioRelaxFM/RadioRelaxFM-Prefix.pch";
 				INFOPLIST_FILE = "RadioRelaxFM/RadioRelaxFM-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ds.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

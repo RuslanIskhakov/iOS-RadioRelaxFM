@@ -36,7 +36,9 @@
 	<key>UILaunchStoryboardName</key>
 	<string>Main</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>UI_iPhone</string>
+	<key>UIMainStoryboardFile~ipad</key>
+	<string>UI_iPad</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -57,5 +59,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array/>
 </dict>
 </plist>

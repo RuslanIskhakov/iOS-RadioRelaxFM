@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *audioTrackTitleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *audioAlbumCoverImageView;
 @property (weak, nonatomic) IBOutlet UIButton *audioControlBtn;
+@property (weak, nonatomic) IBOutlet UIStackView *stackView;
 
 
 @end
@@ -43,6 +44,20 @@
     [super viewDidAppear:animated];
     BOOL isPlaying = [RRAudioPlayer sharedInstance].isPlaying;
     [self updatePlayPauseButton:isPlaying];
+}
+
+- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    if (self.stackView) {
+        if (size.width > size.height) {
+            self.stackView.axis = UILayoutConstraintAxisHorizontal;
+        } else {
+            self.stackView.axis = UILayoutConstraintAxisVertical;
+        }
+        [coordinator animateAlongsideTransition:nil completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        }];
+    } else {
+        NSLog(@"stackView is nil");
+    }
 }
 
 - (void)didReceiveMemoryWarning

@@ -17,6 +17,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *audioAlbumCoverImageView;
 @property (weak, nonatomic) IBOutlet UIButton *audioControlBtn;
 @property (weak, nonatomic) IBOutlet UIStackView *stackView;
+@property (weak, nonatomic) IBOutlet UIView *albumCoverContainerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthEqualityConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightEqualityConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightEqualityConstraintMultiplied;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthEqualityConstraintMultiplied;
 
 @property (strong, nonatomic) RRAudioPlayer *player;
 @property (strong, nonatomic) RRAudioTrackInfo *trackInfo;
@@ -67,13 +72,31 @@
     if (self.stackView) {
         if (size.width > size.height) {
             self.stackView.axis = UILayoutConstraintAxisHorizontal;
+            [self setUpEqualitConstraintMultiplier:NO];
         } else {
             self.stackView.axis = UILayoutConstraintAxisVertical;
+            [self setUpEqualitConstraintMultiplier:YES];
         }
         [coordinator animateAlongsideTransition:nil completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
         }];
     } else {
         NSLog(@"stackView is nil");
+    }
+}
+
+- (void) setUpEqualitConstraintMultiplier:(BOOL)isPortrait {
+    if (self.albumCoverContainerView && self.widthEqualityConstraint && self.heightEqualityConstraint) {
+        if (isPortrait) {
+            self.widthEqualityConstraintMultiplied.active = NO;
+            self.heightEqualityConstraint.active = NO;
+            self.widthEqualityConstraint.active = YES;
+            self.heightEqualityConstraintMultiplied.active = YES;
+        } else {
+            self.widthEqualityConstraint.active = NO;
+            self.heightEqualityConstraintMultiplied.active = NO;
+            self.widthEqualityConstraintMultiplied.active = YES;
+            self.heightEqualityConstraint.active = YES;
+        }
     }
 }
 

@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -44,10 +45,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="975"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMn-cv-Qvu">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="487.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="650"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music_disc" translatesAutoresizingMaskIntoConstraints="NO" id="bCv-2y-eBq">
-                                                <rect key="frame" x="171" y="30" width="427.5" height="427.5"/>
+                                                <rect key="frame" x="89" y="30" width="590" height="590"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="bCv-2y-eBq" secondAttribute="height" multiplier="1:1" id="Wv0-Mn-MXg"/>
                                                 </constraints>
@@ -64,16 +65,16 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDu-CT-f6x">
-                                        <rect key="frame" x="0.0" y="487.5" width="768" height="487.5"/>
+                                        <rect key="frame" x="0.0" y="650" width="768" height="325"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmK-aT-JuF" userLabel="Audio Track Title Label">
-                                                <rect key="frame" x="363" y="171" width="42" height="20.5"/>
+                                                <rect key="frame" x="363" y="89.5" width="42" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXq-bs-Zf3" userLabel="Audio Control Btn">
-                                                <rect key="frame" x="346.5" y="206.5" width="75" height="75"/>
+                                                <rect key="frame" x="346.5" y="125" width="75" height="75"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="75" id="lws-Gm-9BF"/>
                                                     <constraint firstAttribute="width" constant="75" id="nhi-ie-ZiQ"/>
@@ -100,8 +101,16 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="KDu-CT-f6x" firstAttribute="width" secondItem="yMn-cv-Qvu" secondAttribute="width" id="65V-rG-mXY"/>
+                                    <constraint firstItem="KDu-CT-f6x" firstAttribute="height" secondItem="yMn-cv-Qvu" secondAttribute="height" multiplier="0.5" id="7Ac-zI-tf9"/>
                                     <constraint firstItem="KDu-CT-f6x" firstAttribute="height" secondItem="yMn-cv-Qvu" secondAttribute="height" id="XIj-hW-gWK"/>
+                                    <constraint firstItem="KDu-CT-f6x" firstAttribute="width" secondItem="yMn-cv-Qvu" secondAttribute="width" multiplier="0.5" id="lBd-JI-RLo"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="XIj-hW-gWK"/>
+                                        <exclude reference="lBd-JI-RLo"/>
+                                    </mask>
+                                </variation>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -116,10 +125,15 @@
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="albumCoverContainerView" destination="yMn-cv-Qvu" id="3s1-Cv-qnh"/>
                         <outlet property="audioAlbumCoverImageView" destination="bCv-2y-eBq" id="nRZ-u4-NS9"/>
                         <outlet property="audioControlBtn" destination="bXq-bs-Zf3" id="7MN-uF-Kxs"/>
                         <outlet property="audioTrackTitleLabel" destination="mmK-aT-JuF" id="9qG-W6-8Xq"/>
+                        <outlet property="heightEqualityConstraint" destination="XIj-hW-gWK" id="4M0-RA-6mR"/>
+                        <outlet property="heightEqualityConstraintMultiplied" destination="7Ac-zI-tf9" id="9yE-i2-jQL"/>
                         <outlet property="stackView" destination="Fio-gN-uNc" id="IxJ-jX-gwA"/>
+                        <outlet property="widthEqualityConstraint" destination="65V-rG-mXY" id="E75-zG-8Sk"/>
+                        <outlet property="widthEqualityConstraintMultiplied" destination="lBd-JI-RLo" id="5pO-Do-T2x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4C-Pu-ym1" sceneMemberID="firstResponder"/>

@@ -166,14 +166,23 @@ static RRAudioTrackInfo *sharedInstance=nil;
                 id result = [returnedDict objectForKey:RESULT_KEY];
                 if ([result isKindOfClass:[NSDictionary class]]) {
                     NSString *audioTrackTitle = [NSString stringWithFormat:@"%@ - %@",[result objectForKey:EXECUTOR_TITLE_KEY],[result objectForKey:TITLE_KEY]];
-                    if (self.delegate) {
-                        [self.delegate onAudioTrackTitleUpdate:audioTrackTitle];
-                    }
-                
-                    if (![self.prevTrackTitle isEqualToString:audioTrackTitle]) {
-                        self.prevTrackTitle = audioTrackTitle;
-                        if (self.coverDownloader) [self.coverDownloader cancel];
-                        self.coverDownloader = [[RRAlbumCoverDownload alloc] initWithDelegate:self.delegate andTrackTitle:self.prevTrackTitle];
+                    if (audioTrackTitle) {
+                        if ([audioTrackTitle hasPrefix:@"(null)"]) {
+                            if (self.delegate) {
+                                [self.delegate onAudioTrackTitleUpdate:@"..."];
+                                [self.delegate onAudioAlbumCoverUpdated:[UIImage imageNamed:@"music_disc"]];
+                            }
+                        } else {
+                            if (self.delegate) {
+                                [self.delegate onAudioTrackTitleUpdate:audioTrackTitle];
+                            }
+                        
+                            if (![self.prevTrackTitle isEqualToString:audioTrackTitle]) {
+                                self.prevTrackTitle = audioTrackTitle;
+                                if (self.coverDownloader) [self.coverDownloader cancel];
+                                self.coverDownloader = [[RRAlbumCoverDownload alloc] initWithDelegate:self.delegate andTrackTitle:self.prevTrackTitle];
+                            }
+                        }
                     }
                 } else {
                     NSLog(@"actually is a class: %@", [result class]);

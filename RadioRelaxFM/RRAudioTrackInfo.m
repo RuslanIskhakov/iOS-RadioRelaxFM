@@ -60,11 +60,13 @@ static RRAudioTrackInfo *sharedInstance=nil;
 
 - (void) onPlayButtonTapUp: (BOOL) isPlaying
 {
-    self.isRunning = isPlaying;
-    if (self.isRunning) {
-        [NSThread detachNewThreadSelector:@selector(audioTrackInfoThreadMethod)
-                                 toTarget:self
-                               withObject:nil];
+    if (!self.isRunning) {
+        self.isRunning = isPlaying;
+        if (self.isRunning) {
+            [NSThread detachNewThreadSelector:@selector(audioTrackInfoThreadMethod)
+                                     toTarget:self
+                                   withObject:nil];
+        }
     }
 }
 

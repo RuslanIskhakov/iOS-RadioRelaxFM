@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *audioControlBtn;
 @property (weak, nonatomic) IBOutlet UIStackView *stackView;
 
+@property (strong, nonatomic) RRAudioPlayer *player;
+@property (strong, nonatomic) RRAudioTrackInfo *trackInfo;
 
 @end
 
@@ -32,6 +34,20 @@
 //FIXME: update icons drwables, create UI for iPad,
 //FIXME: build from console
 
+- (RRAudioPlayer*) player {
+    if (!_player) {
+        _player = [RRAudioPlayer sharedInstance];
+    }
+    return _player;
+}
+
+- (RRAudioTrackInfo*) trackInfo {
+    if (!_trackInfo) {
+        _trackInfo = [RRAudioTrackInfo sharedInstance:self];
+    }
+    return _trackInfo;
+}
+
 - (void)viewDidLoad
 {
     NSLog(@"View Did Load");
@@ -44,6 +60,7 @@
     [super viewDidAppear:animated];
     BOOL isPlaying = [RRAudioPlayer sharedInstance].isPlaying;
     [self updatePlayPauseButton:isPlaying];
+    [self.trackInfo onPlayButtonTapUp:isPlaying];
 }
 
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
@@ -67,8 +84,8 @@
 }
 
 - (IBAction)onPlayPauseBtnTouchUp:(id)sender {
-    BOOL isPlaying = [[RRAudioPlayer sharedInstance] onPlayButtonTapUp];
-    [[RRAudioTrackInfo sharedInstance:self] onPlayButtonTapUp:isPlaying];
+    BOOL isPlaying = [self.player onPlayButtonTapUp];
+    [self.trackInfo onPlayButtonTapUp:isPlaying];
     [self updatePlayPauseButton:isPlaying];
 }
 

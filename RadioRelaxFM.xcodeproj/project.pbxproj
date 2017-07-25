@@ -62,6 +62,7 @@
 		9A77155918D73DCF00174A16 /* RadioRelaxFMTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RadioRelaxFMTests.m; sourceTree = "<group>"; };
 		9ACDA6CE19C49DFB00FA8081 /* RRAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRAudioPlayer.h; sourceTree = "<group>"; };
 		9ACDA6CF19C49DFB00FA8081 /* RRAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRAudioPlayer.m; sourceTree = "<group>"; };
+		BA12036D1F2744E3001CA7B9 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		BAB21B271B997B9A0058BBDD /* RRAlbumCoverDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRAlbumCoverDownload.h; sourceTree = "<group>"; };
 		BAB21B281B997B9A0058BBDD /* RRAlbumCoverDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRAlbumCoverDownload.m; sourceTree = "<group>"; };
 		BADD17B61B97324E0039D294 /* RRAudioTrackInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRAudioTrackInfo.h; sourceTree = "<group>"; };
@@ -143,6 +144,7 @@
 				BAB21B271B997B9A0058BBDD /* RRAlbumCoverDownload.h */,
 				BAB21B281B997B9A0058BBDD /* RRAlbumCoverDownload.m */,
 				BAE3F6EF1F20A69E00E218BC /* UI_iPad.storyboard */,
+				BA12036D1F2744E3001CA7B9 /* Constants.h */,
 			);
 			path = RadioRelaxFM;
 			sourceTree = "<group>";

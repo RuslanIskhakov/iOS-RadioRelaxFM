@@ -5,7 +5,7 @@
 //  Created by Deltasoft on 17.03.14.
 //  Copyright (c) 2014 Deltasoft. All rights reserved.
 //
-
+#include "Constants.h"
 #import "RRSecondViewController.h"
 
 @interface RRSecondViewController ()
@@ -18,7 +18,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.versionText setText:@"Ver 1.0"];
+    [self.versionText setText:VERSION_NUMBER];
 }
 
 - (void)didReceiveMemoryWarning
@@ -27,7 +27,7 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)openOfficialWebSite:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://relax-fm.ru"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:WEB_SITE_URL]];
 }
 
 

@@ -6,15 +6,9 @@
 //  Copyright (c) 2015 Deltasoft. All rights reserved.
 //
 
+#include "Constants.h"
 #import "RRAudioTrackInfo.h"
 #import "RRAlbumCoverDownload.h"
-
-#define TRACK_INFO_URL @"http://relax-fm.ru/api/getplayingtrackinfo.php?station_id=100&_=%ld"
-#define STATUS_KEY @"status"
-#define ERROR_CODE_KEY @"errorCode"
-#define RESULT_KEY @"result"
-#define EXECUTOR_TITLE_KEY @"executor_title"
-#define TITLE_KEY @"title"
 
 @interface RRAudioTrackInfo()
 @property (atomic) BOOL isRunning;
@@ -127,6 +121,7 @@ static RRAudioTrackInfo *sharedInstance=nil;
                           forMode:NSDefaultRunLoopMode];
         [connection start];
     } @catch (NSException *e) {
+        NSLog(@"Exception on requestAudioTrackInfo: %@", e.description);
         @try {
             [connection cancel];
         } @catch (NSException *e){}
@@ -167,11 +162,11 @@ static RRAudioTrackInfo *sharedInstance=nil;
             if (0==[[returnedDict objectForKey:STATUS_KEY] intValue] && 0==[[returnedDict objectForKey:ERROR_CODE_KEY] intValue]){
                 id result = [returnedDict objectForKey:RESULT_KEY];
                 if ([result isKindOfClass:[NSDictionary class]]) {
-                    NSString *audioTrackTitle = [NSString stringWithFormat:@"%@ - %@",[result objectForKey:EXECUTOR_TITLE_KEY],[result objectForKey:TITLE_KEY]];
+                    NSString *audioTrackTitle = [NSString stringWithFormat:TRACK_TITLE_FORMAT_STRING,[result objectForKey:EXECUTOR_TITLE_KEY],[result objectForKey:TITLE_KEY]];
                     if (audioTrackTitle) {
-                        if ([audioTrackTitle hasPrefix:@"(null)"]) {
+                        if ([audioTrackTitle hasPrefix:NULL_PREFIX]) {
                             if (self.delegate) {
-                                [self.delegate onAudioTrackTitleUpdate:@"..."];
+                                [self.delegate onAudioTrackTitleUpdate:NO_TRACK_TITLE];
                                 [self.delegate onAudioAlbumCoverUpdated:[UIImage imageNamed:@"music_disc"]];
                             }
                         } else {
@@ -194,7 +189,7 @@ static RRAudioTrackInfo *sharedInstance=nil;
             }
         }
     }@catch(NSException *e) {
-        NSLog(@"Exception: %@", [e description]);
+        NSLog(@"Exception: %@", e.description);
     }
 }
 @end

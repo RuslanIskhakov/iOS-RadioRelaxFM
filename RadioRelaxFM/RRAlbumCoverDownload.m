@@ -110,6 +110,7 @@
             }
         }@catch (NSException *e) {
             [self displayDefaultCoverArt];
+            NSLog(@"Exception on downloadAlbumCover: %@", e.description);
         }
         do {
             @autoreleasepool {

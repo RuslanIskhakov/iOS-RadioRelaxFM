@@ -36,7 +36,7 @@
 //+FIXME: check strong/weak, atomic/nonatomic
 //FIXME: move constants to dedicated class
 //FIXME: add calls to NSLog from exception catchers
-//FIXME: update icons drwables, create UI for iPad,
+//+FIXME: update icons drwables, create UI for iPad,
 //FIXME: build from console
 
 - (RRAudioPlayer*) player {

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Deltasoft. All rights reserved.
 //
 
-
+#include "Constants.h"
 #import "RRAudioPlayer.h"
 
 @interface RRAudioPlayer()
@@ -17,8 +17,6 @@
 static RRAudioPlayer *sharedInstance=nil;
 
 @implementation RRAudioPlayer
-
-//http://stackoverflow.com/questions/9276546/can-not-restart-an-interrupted-audio-input-queue-in-background-mode-on-ios
 
 + (RRAudioPlayer*)sharedInstance
 {
@@ -35,7 +33,7 @@ static RRAudioPlayer *sharedInstance=nil;
 - (AVPlayer *)audioPlayer
 {
     if (!_audioPlayer) {
-        NSString *urlString = @"http://101.ru/api/channel/getServers/200/channel/MP3/128/dataFormat/mobile";
+        NSString *urlString = AUDIO_STREAM_URL;
         NSURL *url = [NSURL URLWithString:urlString];
         _audioPlayer = [[AVPlayer alloc] initWithURL:url];
         if (!_audioPlayer) NSLog(@"NULL!!!");

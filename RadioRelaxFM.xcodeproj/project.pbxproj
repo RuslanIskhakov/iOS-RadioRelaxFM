@@ -23,6 +23,7 @@
 		9A77155818D73DCF00174A16 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A77155618D73DCF00174A16 /* InfoPlist.strings */; };
 		9A77155A18D73DCF00174A16 /* RadioRelaxFMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A77155918D73DCF00174A16 /* RadioRelaxFMTests.m */; };
 		9ACDA6D019C49DFB00FA8081 /* RRAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACDA6CF19C49DFB00FA8081 /* RRAudioPlayer.m */; };
+		BA0C97D41F29122100F8F419 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA0C97D21F29122100F8F419 /* LaunchScreen.storyboard */; };
 		BAB21B291B997B9A0058BBDD /* RRAlbumCoverDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB21B281B997B9A0058BBDD /* RRAlbumCoverDownload.m */; };
 		BADD17B81B97324E0039D294 /* RRAudioTrackInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BADD17B71B97324E0039D294 /* RRAudioTrackInfo.m */; };
 		BAE3F6F11F20A69E00E218BC /* UI_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAE3F6EF1F20A69E00E218BC /* UI_iPad.storyboard */; };
@@ -62,6 +63,7 @@
 		9A77155918D73DCF00174A16 /* RadioRelaxFMTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RadioRelaxFMTests.m; sourceTree = "<group>"; };
 		9ACDA6CE19C49DFB00FA8081 /* RRAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRAudioPlayer.h; sourceTree = "<group>"; };
 		9ACDA6CF19C49DFB00FA8081 /* RRAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRAudioPlayer.m; sourceTree = "<group>"; };
+		BA0C97D31F29122100F8F419 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA12036D1F2744E3001CA7B9 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		BAB21B271B997B9A0058BBDD /* RRAlbumCoverDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRAlbumCoverDownload.h; sourceTree = "<group>"; };
 		BAB21B281B997B9A0058BBDD /* RRAlbumCoverDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRAlbumCoverDownload.m; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				BAB21B281B997B9A0058BBDD /* RRAlbumCoverDownload.m */,
 				BAE3F6EF1F20A69E00E218BC /* UI_iPad.storyboard */,
 				BA12036D1F2744E3001CA7B9 /* Constants.h */,
+				BA0C97D21F29122100F8F419 /* LaunchScreen.storyboard */,
 			);
 			path = RadioRelaxFM;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				BAE3F6F11F20A69E00E218BC /* UI_iPad.storyboard in Resources */,
 				9A77154718D73DCF00174A16 /* Images.xcassets in Resources */,
 				9A77153618D73DCF00174A16 /* InfoPlist.strings in Resources */,
+				BA0C97D41F29122100F8F419 /* LaunchScreen.storyboard in Resources */,
 				9A77153F18D73DCF00174A16 /* UI_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +343,14 @@
 				9A77155718D73DCF00174A16 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BA0C97D21F29122100F8F419 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA0C97D31F29122100F8F419 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		BAE3F6EF1F20A69E00E218BC /* UI_iPad.storyboard */ = {
@@ -439,7 +451,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = A43ZVNV86W;
@@ -447,7 +458,7 @@
 				GCC_PREFIX_HEADER = "RadioRelaxFM/RadioRelaxFM-Prefix.pch";
 				INFOPLIST_FILE = "RadioRelaxFM/RadioRelaxFM-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ds.radiorelaxfm;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ds.RadioRelaxFM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -459,7 +470,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = A43ZVNV86W;
@@ -467,7 +477,7 @@
 				GCC_PREFIX_HEADER = "RadioRelaxFM/RadioRelaxFM-Prefix.pch";
 				INFOPLIST_FILE = "RadioRelaxFM/RadioRelaxFM-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ds.radiorelaxfm;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ds.RadioRelaxFM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -1,9 +1,8 @@
 //
 //  RRSecondViewController.m
-//  Radio Relax FM
+//  RadioRelaxFM
 //
-//  Created by Deltasoft on 17.03.14.
-//  Copyright (c) 2014 Deltasoft. All rights reserved.
+//  Created by Ruslan Iskhakov on 17.03.14.
 //
 #include "Constants.h"
 #import "RRSecondViewController.h"

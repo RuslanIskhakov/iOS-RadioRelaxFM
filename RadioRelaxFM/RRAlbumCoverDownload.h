@@ -3,7 +3,6 @@
 //  RadioRelaxFM
 //
 //  Created by Ruslan Iskhakov on 04.09.15.
-//  Copyright (c) 2015 Deltasoft. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

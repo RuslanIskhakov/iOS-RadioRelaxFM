@@ -3,7 +3,6 @@
 //  RadioRelaxFM
 //
 //  Created by Ruslan Iskhakov on 25.07.17.
-//  Copyright © 2017 Deltasoft. All rights reserved.
 //
 
 #ifndef Constants_h

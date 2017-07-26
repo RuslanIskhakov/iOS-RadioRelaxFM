@@ -32,7 +32,7 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    NSLog(@"Background!");
+    //NSLog(@"Background!");
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -43,7 +43,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    NSLog(@"Did become Active");
+    //NSLog(@"Did become Active");
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -58,19 +58,19 @@
         switch(event.subtype)
         {
             case UIEventSubtypeRemoteControlPause:
-                NSLog(@"ControlPause");
+                //NSLog(@"ControlPause");
                 break;
             case UIEventSubtypeRemoteControlStop:
-                NSLog(@"ControlStop");
+                //NSLog(@"ControlStop");
                 break;
             case UIEventSubtypeRemoteControlPlay:
-                NSLog(@"ControlPlay");
+                //NSLog(@"ControlPlay");
                 break;
             case UIEventSubtypeRemoteControlTogglePlayPause:
-                NSLog(@"TogglePlayPause");
+                //NSLog(@"TogglePlayPause");
                 break;
             default:
-                NSLog(@"default");
+                //NSLog(@"default");
                 break;
         }
     }

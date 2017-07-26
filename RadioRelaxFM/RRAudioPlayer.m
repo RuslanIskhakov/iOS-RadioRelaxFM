@@ -36,7 +36,7 @@ static RRAudioPlayer *sharedInstance=nil;
         NSString *urlString = AUDIO_STREAM_URL;
         NSURL *url = [NSURL URLWithString:urlString];
         _audioPlayer = [[AVPlayer alloc] initWithURL:url];
-        if (!_audioPlayer) NSLog(@"NULL!!!");
+        //if (!_audioPlayer) NSLog(@"NULL!!!");
         _audioPlayer.volume=1.0;
     }
     
@@ -45,7 +45,7 @@ static RRAudioPlayer *sharedInstance=nil;
 
 - (instancetype) init
 {
-    NSLog(@"RRAudioPlayer Init");
+    //NSLog(@"RRAudioPlayer Init");
     self = [super init];
     if (self) {
         self.isPlaying = NO;
@@ -57,7 +57,7 @@ static RRAudioPlayer *sharedInstance=nil;
 {
     if (self.isPlaying){
         self.isPlaying = NO;
-        NSLog(@"Cmd Stop");
+        //NSLog(@"Cmd Stop");
     } else {
         
         self.isPlaying = YES;
@@ -65,7 +65,7 @@ static RRAudioPlayer *sharedInstance=nil;
                                  toTarget:self
                                withObject:nil];
         
-        NSLog(@"Cmd Play");
+        //NSLog(@"Cmd Play");
         
         //[self configureRemoteControl];
     }
@@ -95,7 +95,7 @@ static RRAudioPlayer *sharedInstance=nil;
     
     [item enumerateValuesForProperties:itemProperties
                             usingBlock:^(NSString *property, id value, BOOL *stop) {
-                                NSLog(@"Requesting info: %@",property);
+                                //NSLog(@"Requesting info: %@",property);
                                 [newInfo setObject:value forKey:property];
                             }];
     
@@ -104,12 +104,12 @@ static RRAudioPlayer *sharedInstance=nil;
 
 - (void) onRemotePlayCmd
 {
-    NSLog(@"onRemotePlayCmd");
+    //NSLog(@"onRemotePlayCmd");
 }
 
 - (void) onRemotePauseCmd
 {
-    NSLog(@"onRemoteStopCmd");
+    //NSLog(@"onRemoteStopCmd");
 }
 
 - (void) audioThreadMethod
@@ -117,7 +117,7 @@ static RRAudioPlayer *sharedInstance=nil;
     @autoreleasepool {
         
         NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
-        NSLog(@"Audio Thread is starting");
+        //NSLog(@"Audio Thread is starting");
         
         AVAudioSession *audioSession = [AVAudioSession sharedInstance];
         
@@ -127,19 +127,19 @@ static RRAudioPlayer *sharedInstance=nil;
                                            error:&audioSessionError];
         
         if (!success) {
-            if (audioSessionError) NSLog(@"Set category error: %@",audioSessionError.localizedDescription);
+            //if (audioSessionError) NSLog(@"Set category error: %@",audioSessionError.localizedDescription);
             return;
         }
         
         success = [audioSession setMode:AVAudioSessionModeDefault error:&audioSessionError];
         if (!success) {
-            if (audioSessionError) NSLog(@"Set mode error: %@",audioSessionError.localizedDescription);
+            //if (audioSessionError) NSLog(@"Set mode error: %@",audioSessionError.localizedDescription);
             return;
         }
         
         success = [audioSession setActive:YES error:&audioSessionError];
         if (!success) {
-            if (audioSessionError) NSLog(@"Set active error: %@",audioSessionError.localizedDescription);
+            //if (audioSessionError) NSLog(@"Set active error: %@",audioSessionError.localizedDescription);
             return;
         }
         
@@ -164,12 +164,12 @@ static RRAudioPlayer *sharedInstance=nil;
         audioSession = [AVAudioSession sharedInstance];
         success = [audioSession setActive:NO error:&audioSessionError];
         if (!success) {
-            NSLog(@"@Audio Session deactivation error: %@", audioSessionError.localizedDescription);
+            //NSLog(@"@Audio Session deactivation error: %@", audioSessionError.localizedDescription);
         }
         
         [nc removeObserver:self];
         
-        NSLog(@"Audio Thread is stopping");
+        //NSLog(@"Audio Thread is stopping");
     }
 }
 
@@ -180,7 +180,7 @@ static RRAudioPlayer *sharedInstance=nil;
     
     switch (interruptionType.unsignedIntegerValue) {
         case AVAudioSessionInterruptionTypeBegan:{
-                NSLog(@"Audio Interruption Begin");
+                //NSLog(@"Audio Interruption Begin");
                 if (self.isPlaying){
                     [self.audioPlayer pause];
                 }
@@ -188,16 +188,16 @@ static RRAudioPlayer *sharedInstance=nil;
             break;
         case AVAudioSessionInterruptionTypeEnded:{
                 if (interruptionOption.unsignedIntegerValue == AVAudioSessionInterruptionOptionShouldResume) {
-                    NSLog(@"Audio Interruption End");
+                    //NSLog(@"Audio Interruption End");
                     if (self.isPlaying){
                         
                         int status = self.audioPlayer.status;
                         if (AVPlayerStatusFailed==status) {
-                            NSLog(@"Status: Failed");
+                            //NSLog(@"Status: Failed");
                         } else if (AVPlayerStatusReadyToPlay==status) {
-                            NSLog(@"Status: Ready To Play");
+                            //NSLog(@"Status: Ready To Play");
                         } else if (AVPlayerStatusUnknown==status) {
-                            NSLog(@"Status: Uknown");
+                            //NSLog(@"Status: Uknown");
                         }
                         
                         [self.audioPlayer play];

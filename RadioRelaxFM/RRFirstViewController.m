@@ -46,13 +46,13 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"View Did Load");
+    //NSLog(@"View Did Load");
     [super viewDidLoad];
 	self.audioTrackTitleLabel.text = @"";
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-    NSLog(@"View Did Appear");
+    //NSLog(@"View Did Appear");
     [super viewDidAppear:animated];
     BOOL isPlaying = [RRAudioPlayer sharedInstance].isPlaying;
     [self updatePlayPauseButton:isPlaying];
@@ -71,7 +71,7 @@
         [coordinator animateAlongsideTransition:nil completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
         }];
     } else {
-        NSLog(@"stackView is nil");
+        //NSLog(@"stackView is nil");
     }
 }
 
@@ -113,25 +113,25 @@
 
 - (void)onAudioTrackTitleUpdate:(NSString*)title
 {
-    NSLog(@"Receiving Audio Track Title: %@",title);
+    //NSLog(@"Receiving Audio Track Title: %@",title);
     [self performSelectorOnMainThread:@selector(setAudioTrackTitle:) withObject:title waitUntilDone:NO];
 }
 
 - (void) setAudioTrackTitle: (NSString *)title
 {
-    NSLog(@"Displaying Audio Track Title: %@",title);
+    //NSLog(@"Displaying Audio Track Title: %@",title);
     [self.audioTrackTitleLabel setText:title];
 }
 
 - (void)onAudioAlbumCoverUpdated:(UIImage*) cover
 {
-    NSLog(@"Receiving Audio Album Cover Image");
+    //NSLog(@"Receiving Audio Album Cover Image");
     [self performSelectorOnMainThread:@selector(setAudioAlbumCoverImage:) withObject:cover waitUntilDone:NO];
 }
 
 - (void)setAudioAlbumCoverImage:(UIImage*) cover
 {
-    NSLog(@"Displaying Audio Album Cover Image");
+    //NSLog(@"Displaying Audio Album Cover Image");
     [self.audioAlbumCoverImageView setImage:cover];
 }
 

@@ -69,7 +69,7 @@ static RRAudioTrackInfo *sharedInstance=nil;
     @autoreleasepool {
         
         NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
-        NSLog(@"Audio Track Info Thread is starting");
+        //NSLog(@"Audio Track Info Thread is starting");
         
         [self requestAudioTrackInfo];
         
@@ -88,7 +88,7 @@ static RRAudioTrackInfo *sharedInstance=nil;
         
         [timer invalidate];
         
-        NSLog(@"Audio Track Info Thread is stopping");
+        //NSLog(@"Audio Track Info Thread is stopping");
     }
 }
 
@@ -113,7 +113,7 @@ static RRAudioTrackInfo *sharedInstance=nil;
     
         connection=[[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
         if (!connection) {
-            NSLog(@"Can't connect");
+            //NSLog(@"Can't connect");
             @throw [[NSException alloc] init];
         }
 
@@ -121,7 +121,7 @@ static RRAudioTrackInfo *sharedInstance=nil;
                           forMode:NSDefaultRunLoopMode];
         [connection start];
     } @catch (NSException *e) {
-        NSLog(@"Exception on requestAudioTrackInfo: %@", e.description);
+        //NSLog(@"Exception on requestAudioTrackInfo: %@", e.description);
         @try {
             [connection cancel];
         } @catch (NSException *e){}
@@ -134,7 +134,7 @@ static RRAudioTrackInfo *sharedInstance=nil;
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    NSLog(@"Bytes: %lu",(unsigned long)data.length);
+    //NSLog(@"Bytes: %lu",(unsigned long)data.length);
     [self.bytesData appendData:data];
 
 }
@@ -142,22 +142,22 @@ static RRAudioTrackInfo *sharedInstance=nil;
 - (void)connection:(NSURLConnection *)connection
   didFailWithError:(NSError *)error
 {
-    NSLog(@"Connection failed! Error - %@ %@",
-          [error localizedDescription],
-          [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    //NSLog(@"Connection failed! Error - %@ %@",
+    //      [error localizedDescription],
+    //      [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
     self.isRunning = NO;
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSLog(@"Loading is finished");
+    //NSLog(@"Loading is finished");
     
     @try{
         NSError *error;
         NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:self.bytesData options:kNilOptions error:&error];
         
         if (error != nil) {
-            NSLog(@"Error: %@", [error localizedDescription]);
+            //NSLog(@"Error: %@", [error localizedDescription]);
         }else{
             if (0==[[returnedDict objectForKey:STATUS_KEY] intValue] && 0==[[returnedDict objectForKey:ERROR_CODE_KEY] intValue]){
                 id result = [returnedDict objectForKey:RESULT_KEY];
@@ -182,14 +182,14 @@ static RRAudioTrackInfo *sharedInstance=nil;
                         }
                     }
                 } else {
-                    NSLog(@"actually is a class: %@", [result class]);
+                    //NSLog(@"actually is a class: %@", [result class]);
                 }
             } else {
-                NSLog(@"Status: %d, Error: %d", [[returnedDict objectForKey:STATUS_KEY] intValue], [[returnedDict objectForKey:ERROR_CODE_KEY] intValue]);
+                //NSLog(@"Status: %d, Error: %d", [[returnedDict objectForKey:STATUS_KEY] intValue], [[returnedDict objectForKey:ERROR_CODE_KEY] intValue]);
             }
         }
     }@catch(NSException *e) {
-        NSLog(@"Exception: %@", e.description);
+        //NSLog(@"Exception: %@", e.description);
     }
 }
 @end

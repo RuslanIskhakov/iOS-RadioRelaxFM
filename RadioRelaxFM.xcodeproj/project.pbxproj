@@ -127,7 +127,6 @@
 		9A77153118D73DCF00174A16 /* RadioRelaxFM */ = {
 			isa = PBXGroup;
 			children = (
-				9A91C9031A30D2D800DE75DD /* Images */,
 				9A77153A18D73DCF00174A16 /* RRAppDelegate.h */,
 				9A77153B18D73DCF00174A16 /* RRAppDelegate.m */,
 				9A77153D18D73DCF00174A16 /* UI_iPhone.storyboard */,
@@ -177,22 +176,6 @@
 				9A77155618D73DCF00174A16 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		9A91C9031A30D2D800DE75DD /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				9A91C9041A30D2F300DE75DD /* iPhone */,
-			);
-			name = Images;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		9A91C9041A30D2F300DE75DD /* iPhone */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = iPhone;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

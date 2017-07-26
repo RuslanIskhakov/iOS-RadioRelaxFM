@@ -9,7 +9,7 @@
 #ifndef Constants_h
 #define Constants_h
 
-#define VERSION_NUMBER @"Ver 1.0"
+#define VERSION_NUMBER @"Ver 1.0.0"
 #define WEB_SITE_URL @"http://relax-fm.ru"
 
 #define AUDIO_STREAM_URL @"http://101.ru/api/channel/getServers/200/channel/MP3/128/dataFormat/mobile"

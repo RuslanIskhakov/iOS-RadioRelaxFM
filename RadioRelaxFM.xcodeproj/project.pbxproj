@@ -447,7 +447,7 @@
 				GCC_PREFIX_HEADER = "RadioRelaxFM/RadioRelaxFM-Prefix.pch";
 				INFOPLIST_FILE = "RadioRelaxFM/RadioRelaxFM-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ds.RadioRelaxFm;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ds.RadioRelaxFM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -467,7 +467,7 @@
 				GCC_PREFIX_HEADER = "RadioRelaxFM/RadioRelaxFM-Prefix.pch";
 				INFOPLIST_FILE = "RadioRelaxFM/RadioRelaxFM-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ds.RadioRelaxFm;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ds.RadioRelaxFM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
